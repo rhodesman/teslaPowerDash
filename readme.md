@@ -231,7 +231,15 @@ Note that any changes you make to the site will cause the server to reload itsel
 
 Going to the website NodeJS is reporting will present you with a very basic settings page.  Mainly you'll need to enter the addresses for the influxDB, nodeJS API server (this middleware server) and your Tesla username and password.  Once you submit that form, a json file will be created in your `middleware/setup` folder called `pwSettings.json`.
 
+### Get your Tesla oAuth token
 
+Once your settings are inputted, you will receive your personalized Tesla oAuth Token DO NOT SHARE THIS!
+
+Use the token your settings page gave you to access your tesla data via the middleware with this URL:
+
+```
+http://{nodeJS server ip:port}/api/tesla/{your generated tesla API token}/energy_sites/{your powerwall id}/live_status
+```
 
 ## Donate
 

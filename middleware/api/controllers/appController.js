@@ -22,16 +22,19 @@ exports.set_app_data = function (req, res, next) {
   };
 
   fs.writeFile( "setup/pwSettings.json", JSON.stringify( mySet ), (err) => {
-    if (err) throw err;
-    console.log('The file has been saved!');
+    if (err) {
+      throw err;
+    } else {
+      console.log('The file has been saved!');
+      res.send(req.body);
+    }
+
   });
 
-  res.end();
+  //res.end();
 };
 
 exports.get_token_data = function (req, res, next) {
-
-
   var options = {
     method: 'POST',
     url: 'https://owner-api.teslamotors.com/oauth/token',
@@ -45,7 +48,7 @@ exports.get_token_data = function (req, res, next) {
     },
     formData: {
        grant_type: 'password',
-       client_id: settings.clientIO,
+       client_id: settings.clientID,
        client_secret: settings.clientSec,
        email: settings.teslaUsr,
        password: settings.teslaPW
@@ -54,6 +57,7 @@ exports.get_token_data = function (req, res, next) {
 
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
+    console.log(body);
     res.send(body);
   });
 };
@@ -103,6 +107,7 @@ exports.get_api_data = function (req, res, next) {
   request(options, function (error, response, body) {
     if (error) throw new Error(error);
     res.send(body);
+
   });
 };
 
