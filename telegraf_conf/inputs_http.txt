@@ -1,0 +1,41 @@
+# # Read formatted metrics from one or more HTTP endpoints
+ [[inputs.http]]
+#   ## One or more URLs from which to read formatted metrics
+   urls = [
+     "https://{Tesla Gateway IP address}/api/meters/aggregates",
+     "https://{Tesla Gateway IP address}/api/system_status/soe",
+     "Any other JSON API you want really"
+   ]
+#
+#   ## HTTP method
+    method = "GET"
+#
+#   ## Optional HTTP headers
+#   # headers = {"X-Special-Header" = "Special-Value"}
+#
+#   ## Optional HTTP Basic Auth Credentials
+#   # username = "username"
+#   # password = "pa$$word"
+#
+#   ## HTTP entity-body to send with POST/PUT requests.
+#   # body = ""
+#
+#   ## HTTP Content-Encoding for write request body, can be set to "gzip" to
+#   ## compress body or "identity" to apply no encoding.
+#   # content_encoding = "identity"
+#
+#   ## Optional TLS Config
+#   # tls_ca = "/etc/telegraf/ca.pem"
+#   # tls_cert = "/etc/telegraf/cert.pem"
+#   # tls_key = "/etc/telegraf/key.pem"
+#   ## Use TLS but skip chain & host verification
+    insecure_skip_verify = true
+#
+#   ## Amount of time allowed to complete the HTTP request
+    timeout = "5s"
+#
+#   ## Data format to consume.
+#   ## Each data format has its own unique set of configuration options, read
+#   ## more about them here:
+#   ## https://github.com/influxdata/telegraf/blob/master/docs/DATA_FORMATS_INPUT.md
+    data_format = "json"

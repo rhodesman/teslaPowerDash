@@ -1,0 +1,9 @@
+[http]
+  enabled = true
+  bind-address = "{server ip address}:8086"
+  auth-enabled = false
+  log-enabled = true
+#  write-tracing = false
+#  pprof-enabled = false
+#  https-enabled = false
+#  https-certificate = "/etc/ssl/influxdb.pem"
