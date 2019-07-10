@@ -235,11 +235,11 @@ Going to the website NodeJS is reporting will present you with a very basic sett
 
 Once your settings are inputted, you will receive your personalized Tesla oAuth Token DO NOT SHARE THIS!
 
-Use the token your settings page gave you to access your tesla data via the middleware with this URL:
+You will also receive the product ID for your Powerwalls and Solar (if you have solar also).  You will need to test to be sure, but the URL the settings page builds for you should have the Product ID of your powerwalls in it.   
 
-```
-http://{nodeJS server ip:port}/api/tesla/{your generated tesla API token}/energy_sites/{your powerwall id}/live_status
-```
+Copy the API URL the settings page returns and add it to your telegraf settings where your URLs are defined in `[[inputs.http]]`
+
+
 
 ## Donate
 
