@@ -63,9 +63,9 @@ function onSubmit() {
       $("#response").append('<div><p>Product ID: <code>' + jsonres.response[0].energy_site_id + '</code></p></div>');
       if(jsonres.response[1] != null){
         $("#response").append('<div><p>Product ID #2: <code>' + jsonres.response[1].energy_site_id + '</code></p></div>');
-        $("#response").append('<div><p>Your Tesla API URL: <code>http://10.0.10.202:3301/api/tesla/' + token + '/energy_sites/'+ jsonres.response[1].energy_site_id +'/live_status </code></p></div>');
+        $("#response").append('<div><p>Your Tesla API URL: <code>http://localhost:3301/api/tesla/' + token + '/energy_sites/'+ jsonres.response[1].energy_site_id +'/live_status </code></p></div>');
       }else {
-        $("#response").append('<div><p>Your Tesla API URL: <code>http://10.0.10.202:3301/api/tesla/' + token + '/energy_sites/'+ jsonres.response[0].energy_site_id +'/live_status </code></p></div>');
+        $("#response").append('<div><p>Your Tesla API URL: <code>http://localhost:3301/api/tesla/' + token + '/energy_sites/'+ jsonres.response[0].energy_site_id +'/live_status </code></p></div>');
       }
 
     });
