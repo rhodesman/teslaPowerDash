@@ -229,7 +229,9 @@ Server running at http://192.168.1.100:3301
 ```
 Note that any changes you make to the site will cause the server to reload itself (which is a good thing!!).
 
-Going to the website NodeJS is reporting will present you with a very basic settings page.  Mainly you'll need to enter the addresses for the influxDB, nodeJS API server (this middleware server) and your tesla username and password.  
+Going to the website NodeJS is reporting will present you with a very basic settings page.  Mainly you'll need to enter the addresses for the influxDB, nodeJS API server (this middleware server) and your Tesla username and password.  Once you submit that form, a json file will be created in your `middleware/setup` folder called `pwSettings.json`.
+
+
 
 ## Donate
 
