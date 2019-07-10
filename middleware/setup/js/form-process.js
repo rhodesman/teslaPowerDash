@@ -26,34 +26,48 @@ $(function () {
       success : function(result) {
           // you can see the result from the console
           // tab of the developer tools
-          //console.log(result);
           setTimeout(function(){
             onSubmit();
-          }, 1500);
+          }, 900);
 
       },
       error: function(xhr, resp, text) {
           console.log(xhr, resp, text);
       }
-
     });
-    //onSubmit();
-
   });
 
 });
 
 function onSubmit() {
+  var token;
   var settings = {
     "async": true,
     "crossDomain": true,
     "url": "http://127.0.0.1:3301/api/token",
     "method": "GET",
   }
-
   $.ajax(settings).done(function (response) {
     var jsonres = JSON.parse(response);
-    $("#response").append('<div><p>Access Token: ' + jsonres.access_token + '</p></div>');
-  });
+    token = jsonres.access_token;
+    $("#response").append('<div><p>Access Token: <code>' + token + '</code></p></div>');
 
+    settings = {
+      "async": true,
+      "crossDomain": true,
+      "url": "http://127.0.0.1:3301/api/products/" + token,
+      "method": "GET",
+    }
+    $.ajax(settings).done(function (response) {
+      var jsonres = JSON.parse(response);
+      $("#response").append('<div><p>Product ID: <code>' + jsonres.response[0].energy_site_id + '</code></p></div>');
+      if(jsonres.response[1] != null){
+        $("#response").append('<div><p>Product ID #2: <code>' + jsonres.response[1].energy_site_id + '</code></p></div>');
+        $("#response").append('<div><p>Your Tesla API URL: <code>http://10.0.10.202:3301/api/tesla/' + token + '/energy_sites/'+ jsonres.response[1].energy_site_id +'/live_status </code></p></div>');
+      }else {
+        $("#response").append('<div><p>Your Tesla API URL: <code>http://10.0.10.202:3301/api/tesla/' + token + '/energy_sites/'+ jsonres.response[0].energy_site_id +'/live_status </code></p></div>');
+      }
+
+    });
+  });
 }
