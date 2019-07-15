@@ -194,14 +194,21 @@ If you have a Tesla Car, or want to access other data Tesla is storing on your a
 
 Ideally on the same server you have the Grafana dashboard on (but not a requirement) you need to load up the nodeJS middleware.  To do this you will need to have NPM and NodeJS installed on the server hosting the middleware.  There are instructions for setting up both these on the [NodeJS website](https://nodejs.org/).
 
-Once Node and NPM are installed, from within this folder, navigate to the middleware folder
+Once Node and NPM are installed, you will need to clone this repository.
 
+```
+git clone https://github.com/rhodesman/teslaPowerDash
+```
+And navigate into that directory (assuming you just cloned the repo to your current folder)
+
+```
+cd teslaPowerDash
+```
+From within this folder, navigate to the middleware folder
 ```
 cd middleware
 ```
-
 Then you'll need to install the dependencies:
-
 ```
 npm install
 ```
@@ -235,7 +242,7 @@ Going to the website NodeJS is reporting will present you with a very basic sett
 
 Once your settings are inputted, you will receive your personalized Tesla oAuth Token DO NOT SHARE THIS!
 
-You will also receive the product ID for your Powerwalls and Solar (if you have solar also).  You will need to test to be sure, but the URL the settings page builds for you should have the Product ID of your powerwalls in it.   
+You will also receive the product ID for your Powerwalls and Solar (if you have solar).  You will need to test to be sure, but the URL the settings page builds for you should have the Product ID of your powerwalls in it.   
 
 Copy the API URL the settings page returns and add it to your telegraf settings where your URLs are defined in `[[inputs.http]]`
 
