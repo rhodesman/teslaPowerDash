@@ -246,7 +246,16 @@ You will also receive the product ID for your Powerwalls and Solar (if you have 
 
 Copy the API URL the settings page returns and add it to your telegraf settings where your URLs are defined in `[[inputs.http]]`
 
+## Setup Grafana
 
+Once telegraf is setup and capturing the data from the API, you can move to creating a dashboard in Grafana.  To do this, you will need to navigate to the grafana setup on your server.  (The default port for grafana is 3000):
+```
+http://{your server ipaddress}:3000/
+ex: http://192.168.0.220:3000
+```
+I have included two dashboards that I setup for myself in the folder `grafana templates` within this repo.  You will need to search through the json files and replace the server addresses for your influx and tesla middleware API addresses where needed but then you can import the dashboard to your grafana and see the dashboard for youself.  
+
+There is extensive documentation on how to setup Grafana on their site (grafana docs)[https://grafana.com/docs/].  
 
 ## Donate
 
