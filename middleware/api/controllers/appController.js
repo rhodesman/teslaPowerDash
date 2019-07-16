@@ -3,11 +3,11 @@ const request = require("request");
 var fs = require("fs");
 
 var settings;
+
 fs.readFile('setup/pwSettings.json', (err, data) => {
-  if (err) throw err;
-  //console.log(data);
-  settings = JSON.parse(data);
-  //console.log(settings);
+  if (err == null) {
+    settings = JSON.parse(data);
+  }
 });
 
 exports.set_app_data = function (req, res, next) {
