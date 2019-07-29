@@ -1,4 +1,5 @@
 var currentSettings;
+var ajaxURL;
 
 $(function () {
   $.getJSON( "pwSettings.json", function( data ) {
@@ -17,9 +18,14 @@ $(function () {
   $('.btn').on('click', function(e) {
     e.preventDefault();
     var formSettings = $('form').serializeArray();
-    console.log(formSettings);
+    var submitURL = formSettings[1].value + '/submit-settings';
+    
+    formSettings[1].value = formSettings[1].value + '/api';
+    ajaxURL = formSettings[1].value;
+    //console.log(formSettings);
+
     $.ajax({
-      url: 'http://localhost:3301/submit-settings', // url where to submit the request
+      url: submitURL, // url where to submit the request
       type : "POST", // type of action POST || GET
       dataType : 'json', // data type
       data : formSettings, // post data || get data
@@ -41,21 +47,22 @@ $(function () {
 
 function onSubmit() {
   var token;
+  var tokenURL = ajaxURL + '/token';
   var settings = {
     "async": true,
     "crossDomain": true,
-    "url": "http://127.0.0.1:3301/api/token",
+    "url": tokenURL,
     "method": "GET",
   }
   $.ajax(settings).done(function (response) {
     var jsonres = JSON.parse(response);
     token = jsonres.access_token;
     $("#response").append('<div><p>Access Token: <code>' + token + '</code></p></div>');
-
+    var productURL = ajaxURL + '/products/';
     settings = {
       "async": true,
       "crossDomain": true,
-      "url": "http://127.0.0.1:3301/api/products/" + token,
+      "url": productURL + token,
       "method": "GET",
     }
     $.ajax(settings).done(function (response) {
@@ -63,9 +70,9 @@ function onSubmit() {
       $("#response").append('<div><p>Product ID: <code>' + jsonres.response[0].energy_site_id + '</code></p></div>');
       if(jsonres.response[1] != null){
         $("#response").append('<div><p>Product ID #2: <code>' + jsonres.response[1].energy_site_id + '</code></p></div>');
-        $("#response").append('<div><p>Your Tesla API URL: <code>http://localhost:3301/api/tesla/' + token + '/energy_sites/'+ jsonres.response[1].energy_site_id +'/live_status </code></p></div>');
+        $("#response").append('<div><p>Your Tesla API URL: <code>' + ajaxURL + '/tesla/' + token + '/energy_sites/'+ jsonres.response[1].energy_site_id +'/live_status </code></p></div>');
       }else {
-        $("#response").append('<div><p>Your Tesla API URL: <code>http://localhost:3301/api/tesla/' + token + '/energy_sites/'+ jsonres.response[0].energy_site_id +'/live_status </code></p></div>');
+        $("#response").append('<div><p>Your Tesla API URL: <code>' + ajaxURL + '/tesla/' + token + '/energy_sites/'+ jsonres.response[0].energy_site_id +'/live_status </code></p></div>');
       }
 
     });
