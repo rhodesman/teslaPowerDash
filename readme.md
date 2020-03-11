@@ -1,5 +1,7 @@
 # Tesla PowerWall Dashboard
 
+![Image of TeslaPowerDash](https://user-images.githubusercontent.com/1670791/76449727-f4bb7880-63a2-11ea-9b1f-94f0ef7a28a7.png)
+
 Steps to build your own Tesla Powerwall Dashboard.  This guide assumes you have some knowledge of network, development and system administration skills.
 If that scares you are you need to google "how to ssh into server". I suggest you spend some time learning how to do those first.
 
