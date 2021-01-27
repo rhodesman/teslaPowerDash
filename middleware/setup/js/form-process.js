@@ -6,7 +6,6 @@ $(function () {
     //console.log(data);
     currentSettings = data;
     if(currentSettings != null) {
-      $('#influxURL').val(currentSettings.influxURL);
       $('#nodeAPIserver').val(currentSettings.nodeAPIserver);
       $('#clientID').val(currentSettings.clientID);
       $('#clientSec').val(currentSettings.clientSec);
