@@ -56,7 +56,10 @@ exports.get_token_data = function (req, res, next) {
    };
 
   request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    if (error) {
+      console.log(error);
+      return;
+    }
     console.log(body);
     res.send(body);
   });
@@ -76,7 +79,10 @@ exports.get_products = function (req, res, next) {
     }
   };
   request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    if (error) {
+      console.log(error);
+      return;
+    }
     res.send(body);
   });
 };
@@ -105,9 +111,11 @@ exports.get_api_data = function (req, res, next) {
     }
   };
   request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    if (error) {
+      console.log(error);
+      return;
+    }
     res.send(body);
-
   });
 };
 
@@ -142,7 +150,10 @@ exports.get_hist_data = function (req, res, next) {
     }
   };
   request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    if (error) {
+      console.log(error);
+      return;
+    }
     res.send(body);
   });
 };
