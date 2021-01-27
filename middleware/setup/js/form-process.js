@@ -20,8 +20,7 @@ $(function () {
     var formSettings = $('form').serializeArray();
     var submitURL = formSettings[1].value + '/submit-settings';
     
-    formSettings[1].value = formSettings[1].value + '/api';
-    ajaxURL = formSettings[1].value;
+    ajaxURL = formSettings[1].value + '/api';
     //console.log(formSettings);
 
     $.ajax({
