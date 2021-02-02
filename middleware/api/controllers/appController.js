@@ -142,7 +142,10 @@ exports.get_hist_data = function (req, res, next) {
     }
   };
   request(options, function (error, response, body) {
-    if (error) throw new Error(error);
+    if (error) {
+      console.log("response: " + response);
+      console.log("error: " + error);
+    }
     res.send(body);
   });
 };
