@@ -13,7 +13,6 @@ fs.readFile('setup/pwSettings.json', (err, data) => {
 exports.set_app_data = function (req, res, next) {
   //const username = req.body.username
   var mySet = {
-    influxURL: req.body.influxURL,
     nodeAPIserver: req.body.nodeAPIserver,
     clientID:req.body.clientID,
     clientSec:req.body.clientSec,
