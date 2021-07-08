@@ -16,7 +16,7 @@
     "express-ws-routes": "^1.1.0",
     "mongoose": "^5.7.5",
     "request": "^2.88.0",
-    "socket.io": "^2.2.0",
+    "socket.io": "^2.4.0",
     "ws": "^7.4.6"
   },
   "devDependencies": {
