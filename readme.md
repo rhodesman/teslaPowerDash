@@ -259,6 +259,25 @@ I have included two dashboards that I setup for myself in the folder `grafana te
 
 There is extensive documentation on how to setup Grafana on their site (grafana docs)[https://grafana.com/docs/].  
 
+## V3.0.0 Update Notes:
+
+Since Tesla revamped their API end points and security protocalls, V3 updates to this middleware API address the new security protocalls and changes to the URL endpoints has changed.
+
+Instructions are relitivly the same however you no longer need the Client ID or Key to access the powerwalls and everything is now authenticating locally vs. the Tesla api cloud.  
+
+The new endpoints have been updated in the telegraf inputs_http.txt file but the following endpoints will give you all the same data as before:
+
+```
+"https://{This app middleware IP:port}/api/aggregates",
+"https://{This app middleware IP:port}/api/site_info",
+"https://{This app middleware IP:port}/api/solar",
+"https://{This app middleware IP:port}/api/grid",
+"https://{This app middleware IP:port}/api/house",
+"https://{This app middleware IP:port}/api/status",
+"https://{This app middleware IP:port}/api/sitemaster",
+"https://{This app middleware IP:port}/api/battery"
+```
+
 ## Donate
 
 If you enjoy this setup and want to help pay for my kids college, feel free to "buy me a coffee" or whatever the kids call it these days.

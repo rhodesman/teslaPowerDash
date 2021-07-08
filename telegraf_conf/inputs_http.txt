@@ -2,8 +2,14 @@
  [[inputs.http]]
 #   ## One or more URLs from which to read formatted metrics
    urls = [
-     "https://{Tesla Gateway IP address}/api/meters/aggregates",
-     "https://{Tesla Gateway IP address}/api/system_status/soe",
+     "https://{This app middleware IP:port}/api/aggregates",
+     "https://{This app middleware IP:port}/api/site_info",
+     "https://{This app middleware IP:port}/api/solar",
+     "https://{This app middleware IP:port}/api/grid",
+     "https://{This app middleware IP:port}/api/house",
+     "https://{This app middleware IP:port}/api/status",
+     "https://{This app middleware IP:port}/api/sitemaster",
+     "https://{This app middleware IP:port}/api/battery",
      "Any other JSON API you want really"
    ]
 #
