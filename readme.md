@@ -263,7 +263,9 @@ There is extensive documentation on how to setup Grafana on their site (grafana 
 
 Since Tesla revamped their API end points and security protocalls, V3 updates to this middleware API address the new security protocalls and changes to the URL endpoints has changed.
 
-Instructions are relitivly the same however you no longer need the Client ID or Key to access the powerwalls and everything is now authenticating locally vs. the Tesla api cloud.  
+Instructions are relatively the same however you no longer need the Client ID or Key to access the powerwalls and everything is now authenticating locally vs. the Tesla api cloud.
+
+When you update your code to V.3.0.0+ please delete the file `/middleware/setup/pwSettings.json` and redo the setup process as the settings have drastically changed from Tesla's last API Authentication methods.  
 
 The new endpoints have been updated in the telegraf inputs_http.txt file but the following endpoints will give you all the same data as before:
 
