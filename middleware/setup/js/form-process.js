@@ -8,8 +8,7 @@ $(function () {
     if(currentSettings != null) {
       $('#influxURL').val(currentSettings.influxURL);
       $('#nodeAPIserver').val(currentSettings.nodeAPIserver);
-      $('#clientID').val(currentSettings.clientID);
-      $('#clientSec').val(currentSettings.clientSec);
+      $('#tesPowIP').val(currentSettings.clientID);
       $('#teslaUsr').val(currentSettings.teslaUsr);
       $('#teslaPW').val(currentSettings.teslaPW);
     }
@@ -19,7 +18,7 @@ $(function () {
     e.preventDefault();
     var formSettings = $('form').serializeArray();
     var submitURL = formSettings[1].value + '/submit-settings';
-    
+
     formSettings[1].value = formSettings[1].value + '/api';
     ajaxURL = formSettings[1].value;
     //console.log(formSettings);
@@ -56,7 +55,8 @@ function onSubmit() {
   }
   $.ajax(settings).done(function (response) {
     var jsonres = JSON.parse(response);
-    token = jsonres.access_token;
+    console.log(jsonres);
+    token = jsonres.token;
     $("#response").append('<div><p>Access Token: <code>' + token + '</code></p></div>');
     var productURL = ajaxURL + '/products/';
     settings = {

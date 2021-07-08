@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "NODE_TLS_REJECT_UNAUTHORIZED='0' node app.js",
     "test": "node --inspect app.js"
   },
   "keywords": [],
@@ -15,11 +15,12 @@
     "express": "^4.16.4",
     "express-ws-routes": "^1.1.0",
     "mongoose": "^5.7.5",
+    "open": "^8.2.1",
     "request": "^2.88.0",
     "socket.io": "^2.4.0",
     "ws": "^7.4.6"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "nodemon": "^2.0.10"
   }
 }

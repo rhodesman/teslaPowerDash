@@ -7,7 +7,9 @@ const ifaces = os.networkInterfaces();
 const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
+const fs = require("fs");
 const path = require('path');
+const open = require('open');
 const app = express();
 const port = process.env.PORT || 3301;
 
@@ -55,9 +57,24 @@ app.use(function (req, res) {
         url: req.originalUrl + ' not found'
     });
 });
-
-
+var the_interval = 64 * 60 * 1000;
 
 app.listen(port, () => {
-    console.log(`Server running at http://${thisIPaddr}`);
+  console.log(`Server running at http://${thisIPaddr}`);
+  getToken();
+
 });
+
+function getToken() {
+  fs.readFile('setup/pwSettings.json', (err, data) => {
+    if (err) {
+      open(`http://${thisIPaddr}`);
+    }else {
+      request(`http://${thisIPaddr}/api/token`, { json: true }, (err, res, body) => {
+        console.log(body);
+        if (err) { return console.log(err); }
+      });
+    }
+  });
+
+};

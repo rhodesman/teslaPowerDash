@@ -61,3 +61,4 @@ typings/
 .next
 pwSettings.json
 pwSettings.json.old
+pwToken.json
